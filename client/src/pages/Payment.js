@@ -1,11 +1,14 @@
 import React from 'react';
 import { API } from '../config/api';
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/userContext';
 
 const Payment = () => {
+
+
+    const [price, setPrice] = useState(100000)
   const [state] = useContext(UserContext)
     let navigate = useNavigate();
 
@@ -26,23 +29,39 @@ const Payment = () => {
         document.body.removeChild(scriptTag);
     };
 }, []);
+
+
+const [booking, setBooking] = useState();
+useEffect (() =>{
+    setBooking({
+        price: price,
+    })
+    
+},[price])
+
+console.log(booking,"isi bookung");
+
+
+
 const handleBuy = useMutation(async (e) => {
     try {
         const config = {
             headers: {
-                "Content-type": "application/json",
+                "Content-type": "multipart/form-data",
             },
         };
-        const data = {
-            seller_id: state.user.id,
-            price: e.price,
-        };
+        const formData = new FormData() 
+        formData.set("price", booking.price)
+        formData.set("GrossAmt", price);
 
-        const body = JSON.stringify(data);
 
-        console.log(body,"ini isi data");
+        // console.log(data, "ini kotol");
 
-        const response = await API.post("/transaction", body, config);
+        // const body = JSON.stringify(data);
+
+        // console.log(body,"ini isi data");
+
+        const response = await API.post("/transaction", formData, config);
         console.log("transaction success :", response);
 
         const token = response.data.data.token;
@@ -80,7 +99,7 @@ const handleBuy = useMutation(async (e) => {
             <h3 className="font-bold text-md mb-5">Regular</h3>
             <p className="font-bold text-red-700 text-2xl mb-3">Rp 20K </p>
             <p className="text-justify">regular plan for a week, you can get access for limited thousand tv series and movies, auto renewal every week. cannot be cancel unless you close you're bank account.</p>
-            <button onClick={() => handleBuy.mutate({ price: 20000 })} className="bg-red-700 text-white mt-5 py-2 rounded-md">Buy plan</button>
+            <button onClick={(e) => handleBuy.mutate({ price: 100000 })} className="bg-red-700 text-white mt-5 py-2 rounded-md">Buy plan</button>
           </div>
 
           <div className="w-1/3 flex flex-col justify-between bg-zinc-800 shadow-md rounded-md p-3">
