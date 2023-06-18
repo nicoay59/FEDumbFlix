@@ -66,7 +66,7 @@ function CardProfil() {
                     <img src="/email.png" className='pe-3'></img> {state?.user.email}
                     </div>
                     <div className='p-3'>
-                    <img src="/shape.png" className='pe-3'></img> {state?.user.subs}
+                    <img src="/Shape.png" className='pe-3'></img> {state?.user.subs}
                     </div>
                     <div className='p-3'>
                     <img src="/gender.png" className='pe-3'></img> {state?.user.gender}

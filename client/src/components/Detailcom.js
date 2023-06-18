@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { API } from "../config/api";
+import { UserContext } from '../context/userContext';
 import "./Style.css";
 
 
@@ -16,10 +17,16 @@ function Detailcom() {
 
     console.log(detail, "ini isi detail");
 
+    const [state] = useContext(UserContext);
+    state?.user.subs
+    console.log(state, "ini state");
+
+
   return (
     <div>
+        {state?.user?.subs === "premium" ? (
         <div class="videoWrapper"><iframe src={detail?.link}
-        frameborder="0" allowfullscreen class="video"></iframe></div>
+        frameborder="0" allowfullscreen class="video"></iframe></div>) : (<div> <h1>silahkan Subrek dahulu</h1> </div>)}
         <div className='d-flex justify-content-between ' style={{margin:"100px"}}>
 
 

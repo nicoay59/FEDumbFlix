@@ -49,7 +49,7 @@ function NavUser({handleLogout}) {
                      Profile</Link>
                 </Dropdown.Item>
             <Dropdown.Item>
-            <Link to="/payment-waiting/:puantiti/:price" style={{textDecoration:'none', color:'white'}}><img src='/bill.png' className='p-2'></img>
+            <Link to="/payment" style={{textDecoration:'none', color:'white'}}><img src='/bill.png' className='p-2'></img>
                      Pay</Link>
             </Dropdown.Item>
             <Dropdown.Item onClick={handleLogoutklik} style={{color:"white"}}>
