@@ -74,19 +74,25 @@ function App() {
   return (
     <div className="App"> 
     <NavbarCom />
+    {isLoading ? null :
     <Routes>
       <Route exact path="/" element={< Home/>} />
+      <Route element={<PrivateRouteLogin />} >
+      <Route element={<PrivateRouteUser />} >
       <Route exact path="/movies" element={<HomeMovies />} />
       <Route exact path="/TvShows" element={<HomeTvShows />} />
-      <Route exact path="/addfilm" element={<Formadd />}  />
       <Route exact path="/detail/:id" element={<Detailcom />}  />
       <Route exact path="/profile" element={<CardProfil />} />
+      </Route>
+      <Route element={<PrivateRouteAdmin />} >
+      <Route exact path="/addfilm" element={<Formadd />}  />
       <Route exact path="/listfilm" element={<ListFilm />} />
       <Route exact path='/homeadmin' element={<IncomingTrans/>} />
       <Route exact path='/payment' element={<Payment />} />
-
-
+      </Route>
+      </Route>
     </Routes>
+    }
     </div>
   );
 }
