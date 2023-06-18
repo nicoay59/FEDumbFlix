@@ -83,12 +83,12 @@ function App() {
       <Route exact path="/TvShows" element={<HomeTvShows />} />
       <Route exact path="/detail/:id" element={<Detailcom />}  />
       <Route exact path="/profile" element={<CardProfil />} />
+      <Route exact path='/payment' element={<Payment />} />
       </Route>
       <Route element={<PrivateRouteAdmin />} >
       <Route exact path="/addfilm" element={<Formadd />}  />
       <Route exact path="/listfilm" element={<ListFilm />} />
       <Route exact path='/homeadmin' element={<IncomingTrans/>} />
-      <Route exact path='/payment' element={<Payment />} />
       </Route>
       </Route>
     </Routes>

@@ -41,8 +41,8 @@ function IncomingTrans() {
 
 
   return (
-    <div style={{ backgroundColor: "#E5E5E5", minHeight: "800hv", height:"800px"}}>
-      <div style={{ backgroundColor: "#E5E5E5", paddingTop: "100px" }}>
+    <div style={{  minHeight: "800hv", height:"800px"}}>
+      <div style={{  paddingTop: "100px" }}>
         <Container>
           <table
             className="table-striped table hover table-hover"
@@ -57,8 +57,9 @@ function IncomingTrans() {
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Users</th>
-                <th scope="col">Trip</th>
                 <th scope="col">Bukti Transfer</th>
+                <th scope="col">Remaining Active</th>
+                <th scope="col">Status User</th>
                 <th scope="col">Status Payment</th>
                 <th scope="col">Action</th>
               </tr>
@@ -67,10 +68,11 @@ function IncomingTrans() {
               {transaction?.map((kont, index) => (
               <tr>
                 <th scope="row">{index + 1}</th>
-                <td>{kont?.userdata?.fullname}</td>
-                <td>{kont?.trip?.title}</td>
-                <td>BRI.png</td>
-                <td>pending</td>
+                <td>{kont?.user?.name}</td>
+                <td>Bri.png</td>
+                <td>{transaction?.duration}</td>
+                <td>{kont?.user?.subs}</td>
+                <td>{transaction?.status}</td>
                 <td>
                   <button
                     type="button"
